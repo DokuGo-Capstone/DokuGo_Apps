@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.dokugo.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_predict"
+            app:destination="@id/navigation_predict"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_predict"
+        android:name="com.dokugo.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_money_manager"
+        android:name="com.dokugo.ui.moneymanage.MoneyFragment"
+        android:label="@string/Money_manager"
+        tools:layout="@layout/fragment_money">
+        <action
+            android:id="@+id/action_moneyFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
+        <action
+            android:id="@+id/action_moneyFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.dokugo.ui.settings.SettingsFragment"
+        android:label="@string/title_Setomgs"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.dokugo.ui.settings.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_settingsFragment"
+            app:destination="@id/navigation_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.dokugo.ui.moneymanage.IncomeFragment"
+        android:label="IncomeFragment">
+        <action
+            android:id="@+id/action_incomeFragment_to_moneyFragment"
+            app:destination="@id/navigation_money_manager" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/expenseFragment"
+        android:name="com.dokugo.ui.moneymanage.ExpenseFragment"
+        android:label="fragment_expense"
+        tools:layout="@layout/fragment_expense" >
+        <action
+            android:id="@+id/action_expenseFragment_to_moneyFragment"
+            app:destination="@id/navigation_money_manager" />
+    </fragment>
+
+</navigation>

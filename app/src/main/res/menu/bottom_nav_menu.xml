@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/dashboard" />
+
+    <item
+        android:id="@+id/navigation_predict"
+        android:icon="@drawable/ic_increase"
+        android:title="@string/predict"/>
+
+    <item
+        android:id="@+id/navigation_money_manager"
+        android:icon="@drawable/baseline_swap_vert_24"
+        android:title="@string/Money_manager" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="@string/settings"
+        />
+
+</menu>

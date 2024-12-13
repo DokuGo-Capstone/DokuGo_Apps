@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.moneymanage.MoneyFragment"
+    android:background="@color/appBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@string/budget_manager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </TextView>
+
+        <TextView
+            android:id="@+id/title_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/income_text"
+            android:textStyle="bold"
+            android:text="@string/income"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+        </TextView>
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_month"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/month"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_income" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_week"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/week"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@id/bt_month"
+            app:layout_constraintTop_toBottomOf="@id/title_income" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_day"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/day"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@id/bt_week"
+            app:layout_constraintTop_toBottomOf="@id/title_income" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_year"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/year"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/bt_month"
+            app:layout_constraintTop_toBottomOf="@id/title_income" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_all"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/all"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/bt_year"
+            app:layout_constraintTop_toBottomOf="@id/title_income" />
+
+        <FrameLayout
+            android:id="@+id/frame_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bt_month"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/imgincome"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:src="@drawable/income_money_field"
+                android:contentDescription="@string/income" />
+
+            <TextView
+                android:id="@+id/incomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/income"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:elevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_income"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <FrameLayout
+            android:id="@+id/frame_addincome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lineChart"
+            app:layout_constraintEnd_toEndOf="@id/lineChart">
+
+            <ImageView
+                android:id="@+id/imgaddincome"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
+                android:src="@drawable/bt_add_income"
+                android:contentDescription="@string/income" />
+
+            <TextView
+                android:id="@+id/addincometext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_income"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/detailincome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_income"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/lineChart"
+            app:layout_constraintTop_toBottomOf="@id/lineChart" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/income_all"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/all"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@id/detailincome"
+            app:layout_constraintTop_toBottomOf="@id/detailincome" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/income_salary"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/salary"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/income_all"
+            app:layout_constraintTop_toBottomOf="@id/detailincome" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/income_others"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/others"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/income_salary"
+            app:layout_constraintTop_toBottomOf="@id/detailincome" />
+
+        <LinearLayout
+            android:id="@+id/all_detail_income_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/income_others"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- This will be dynamically added for each income detail -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/all_detail_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/detail_income_field"
+                    android:layout_width="320dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/detail_income_field"
+                    android:contentDescription="@string/income"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/icon_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_monetization_on_24"
+                    android:contentDescription="@string/income"
+                    app:layout_constraintStart_toStartOf="@id/detail_income_field"
+                    app:layout_constraintTop_toTopOf="@id/detail_income_field"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_income_field"
+                    android:layout_marginStart="16dp"/>
+
+                <TextView
+                    android:id="@+id/income_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money"
+                    app:layout_constraintTop_toTopOf="@id/detail_income_field" />
+
+                <TextView
+                    android:id="@+id/income_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money"
+                    app:layout_constraintTop_toTopOf="@id/detail_income_field" />
+
+                <TextView
+                    android:id="@+id/income_ket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keterangan"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money"
+                    app:layout_constraintTop_toBottomOf="@id/income_date" />
+
+                <TextView
+                    android:id="@+id/detail_income_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/money"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="@id/detail_income_field"
+                    app:layout_constraintTop_toTopOf="@id/detail_income_field"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_income_field"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/expense_text"
+            android:textStyle="bold"
+            android:text="@string/expense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/all_detail_income_container">
+        </TextView>
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_month_ex"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/month"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_expense" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_week_ex"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/week"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@id/bt_month_ex"
+            app:layout_constraintTop_toBottomOf="@id/title_expense" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_day_ex"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/day"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@id/bt_week_ex"
+            app:layout_constraintTop_toBottomOf="@id/title_expense" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_year_ex"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/year"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/bt_month_ex"
+            app:layout_constraintTop_toBottomOf="@id/title_expense" />
+
+        <com.dokugo.ui.custom.CustomButtonDate
+            android:id="@+id/bt_all_ex"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:text="@string/all"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/bt_year_ex"
+            app:layout_constraintTop_toBottomOf="@id/title_expense" />
+
+        <FrameLayout
+            android:id="@+id/frame_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bt_month_ex"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/imgexpense"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:src="@drawable/expense_money_field"
+                android:contentDescription="@string/expense" />
+
+            <TextView
+                android:id="@+id/expenseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expense"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart_ex"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:elevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_expense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <FrameLayout
+            android:id="@+id/frame_addexpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lineChart_ex"
+            app:layout_constraintEnd_toEndOf="@id/lineChart_ex">
+
+            <ImageView
+                android:id="@+id/imgaddexpense"
+                android:layout_width="160dp"
+                android:layout_height="55dp"
+                android:src="@drawable/bt_add_expense"
+                android:contentDescription="@string/expense" />
+
+            <TextView
+                android:id="@+id/addexpensetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_expense"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/detailexpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_transaction"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/lineChart_ex"
+            app:layout_constraintTop_toBottomOf="@id/lineChart_ex" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/expense_category_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/detailexpense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.dokugo.ui.custom.CustomButtonDate
+                android:id="@+id/expense_all"
+                android:layout_width="50dp"
+                android:layout_height="28dp"
+                android:text="@string/all"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.dokugo.ui.custom.CustomButtonDate
+                android:id="@+id/expense_transport"
+                android:layout_width="75dp"
+                android:layout_height="28dp"
+                android:text="@string/transport"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/expense_all"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.dokugo.ui.custom.CustomButtonDate
+                android:id="@+id/expense_food"
+                android:layout_width="50dp"
+                android:layout_height="28dp"
+                android:text="@string/food"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/expense_transport"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.dokugo.ui.custom.CustomButtonDate
+                android:id="@+id/expense_shopping"
+                android:layout_width="75dp"
+                android:layout_height="28dp"
+                android:text="@string/shopping"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/expense_food"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.dokugo.ui.custom.CustomButtonDate
+                android:id="@+id/expense_others"
+                android:layout_width="50dp"
+                android:layout_height="28dp"
+                android:text="@string/others"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/expense_shopping"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/all_detail_expense_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/expense_category_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/all_detail_expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/detail_expense_field"
+                    android:layout_width="320dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/detail_expense_field"
+                    android:contentDescription="@string/expense"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/icon_money_ex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_monetization_on_24"
+                    android:contentDescription="@string/income"
+                    app:layout_constraintStart_toStartOf="@+id/detail_expense_field"
+                    app:layout_constraintTop_toTopOf="@+id/detail_expense_field"
+                    app:layout_constraintBottom_toBottomOf="@+id/detail_expense_field"
+                    android:layout_marginStart="16dp"/>
+
+                <TextView
+                    android:id="@+id/expense_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money_ex"
+                    app:layout_constraintTop_toTopOf="@+id/detail_expense_field" />
+
+                <TextView
+                    android:id="@+id/expense_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money_ex"
+                    app:layout_constraintTop_toTopOf="@id/detail_expense_field" />
+
+                <TextView
+                    android:id="@+id/income_ket_ex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keterangan"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@id/icon_money_ex"
+                    app:layout_constraintTop_toBottomOf="@id/expense_date" />
+
+                <TextView
+                    android:id="@+id/detail_expense_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/money"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="@id/detail_expense_field"
+                    app:layout_constraintTop_toTopOf="@id/detail_expense_field"
+                    app:layout_constraintBottom_toBottomOf="@id/detail_expense_field"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
