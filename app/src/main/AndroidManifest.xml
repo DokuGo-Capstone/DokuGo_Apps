@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_dokugo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_dokugo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Dokugo"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.settings.ProfileAvatarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.resetpassword.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.resetpassword.OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.resetpassword.ResetPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.signup.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.signin.SignInActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Declare custom attributes for ImageButtonCustom -->
+    <declare-styleable name="ImageButtonCustom">
+        <attr name="imageSrc" format="reference" />
+        <attr name="text" format="string" />
+    </declare-styleable>
+</resources>

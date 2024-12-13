@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#004074</color>
+    <color name="gray">#808080</color>
+    <color name="green">#35BA38</color>
+
+<!--    background-->
+    <color name="appBackground">#ECEBE7</color>
+
+<!--    appbar-->
+    <color name="appbar">#9fe6a3 </color>
+    <color name="selected_color">#FF000000</color>
+    <color name="unselected_color">#808080</color>
+
+<!--    button-->
+    <color name="slightdarkbutton">#c4c4bc</color>
+    <color name="darkbutton">#50514a</color>
+
+<!--    text-->
+    <color name="income_text">#63D054</color>
+    <color name="expense_text">#DB8840</color>
+
+<!--    dokugo-->
+    <color name="dokugo_basecolor">#083C42</color>
+
+<!--    chart-->
+    <color name="income_chart">#B363D054</color>
+    <color name="expense_chart">#B3DB8840</color>
+
+</resources>
